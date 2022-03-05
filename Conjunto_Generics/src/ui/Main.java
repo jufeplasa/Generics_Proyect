@@ -7,8 +7,8 @@ public class Main {
     static Calculator option = new Calculator();
     
     public static void main(String[] args) {
-        Set<String> a = option.readInfo_a();
-        Set<String> b = option.readInfo_a();
+        Set<String> a = option.nameSet();
+        Set<String> b = option.nameSet();
         option.menu(a, b);
     }
     

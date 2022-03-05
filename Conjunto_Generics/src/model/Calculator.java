@@ -8,7 +8,7 @@ import java.util.Set;
 public class Calculator implements Conjunto {
     
     static Scanner sc = new Scanner(System.in);
-    public Set<String> readInfo_a() {
+    public Set<String> nameSet() {
 
         String conjunto1 = "";
         System.out.println("Ingrese los elementos del conjunto (separados por comas)");
