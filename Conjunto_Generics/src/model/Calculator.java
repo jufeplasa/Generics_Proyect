@@ -6,11 +6,12 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Calculator implements Conjunto {
+    
     static Scanner sc = new Scanner(System.in);
     public Set<String> readInfo_a() {
 
         String conjunto1 = "";
-        System.out.println("Ingrese los datos del conjunto 1:");
+        System.out.println("Ingrese los elementos del conjunto (separados por comas)");
         conjunto1 = sc.nextLine();
         String[] partsa = conjunto1.split(",");
         Set<String> a = new HashSet<String>();
@@ -18,20 +19,6 @@ public class Calculator implements Conjunto {
             a.addAll(Arrays.asList(new String[]{partsa[i]}));
         }
         return a;
-    }
-
-    //----------------------------------------------------------------
-    public Set<String> readInfo_b() {
-
-        String conjunto2 = "";
-        System.out.println("Ingrese los datos del conjunto 2:");
-        conjunto2 = sc.nextLine();
-        String[] partsb = conjunto2.split(",");
-        Set<String> b = new HashSet<String>();
-        for (int i = 0; i < partsb.length; i++) {
-            b.addAll(Arrays.asList(new String[]{partsb[i]}));
-        }
-        return b;
     }
 
     public void union(Set<String> a, Set<String> b) {
