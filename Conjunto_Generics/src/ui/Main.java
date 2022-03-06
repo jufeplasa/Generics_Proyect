@@ -24,7 +24,7 @@ public class Main {
     
     public static int message_menu() {
         int option;
-        System.out.println("*********MENU**********" + "\n1.Union               *" + "\n2.Interseccion        *" + "\n3.Diferencia *" +"\n4.Diferencia simetrica*" + "\n0.salir               *" + "\n***********************");
+        System.out.println("*********MENU**********" + "\n1.Union               *" + "\n2.Interseccion        *" + "\n3.Diferencia          *" +"\n4.Diferencia simetrica*" + "\n0.salir               *" + "\n***********************");
         option = sc.nextInt();
         return option;
     }
