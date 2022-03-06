@@ -69,7 +69,7 @@ public class Main {
             }
             else if(option==4) {
             	 Conjunto<String> diferenciaS =new Conjunto<String>();
-                 diferenciaS.diferencia(A,B);
+                 diferenciaS.diferenciaSimetrica(A,B);
                  System.out.println ("Diferencia simetrica: "+diferenciaS.mostrarConjunto());
             }
             else if (option >= 4 || option <= -1) {

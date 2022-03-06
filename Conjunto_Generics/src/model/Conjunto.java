@@ -8,7 +8,7 @@ public class Conjunto<T> implements IConjunto<T> {
 
 
 	public Conjunto (){
-		
+		createSet();
 	}
 
 	@Override
@@ -18,14 +18,13 @@ public class Conjunto<T> implements IConjunto<T> {
 
 	@Override
 	public void addElements(T newElement) {
-		System.out.println(newElement);
 		elemento.add(newElement);
 	}
 	
 	public boolean elementoRepetido(T element) {
 		boolean repetido=false;
 		for(int i=0;i<elemento.size()&&!repetido;i++ ) {
-			if(elemento.get(i)==element) {
+			if(elemento.get(i).equals(element)) {
 				repetido=true;
 			}
 		}
@@ -52,7 +51,7 @@ public class Conjunto<T> implements IConjunto<T> {
 	public void intersection(IConjunto<T> a, IConjunto<T> b) {
 		for(int i=0;i<a.getElemento().size();i++) {
 			for(int j=0;j<b.getElemento().size();j++) {
-				if(a.getElemento().get(i)==b.getElemento().get(j)) {
+				if(a.getElemento().get(i).equals(b.getElemento().get(j))) {
 					if(!elementoRepetido(a.getElemento().get(i))) {
 						addElements(a.getElemento().get(i));
 					}
@@ -67,7 +66,7 @@ public class Conjunto<T> implements IConjunto<T> {
 		Conjunto<T> universal = new Conjunto<T>();
 		universal.union(a, b);
 		for(int i=0;i<universal.getElemento().size();i++) {
-			if(a.getElemento().contains(universal)&&!b.getElemento().contains(universal)) {
+			if(a.getElemento().contains(universal.getElemento().get(i))&&!b.getElemento().contains(universal.getElemento().get(i))) {
 				if(!elementoRepetido(a.getElemento().get(i))) {
 					addElements(a.getElemento().get(i));
 				}
@@ -80,7 +79,7 @@ public class Conjunto<T> implements IConjunto<T> {
 		union(a, b);
 		for(int i=0;i<a.getElemento().size();i++) {
 			for(int j=0;j<b.getElemento().size();j++) {
-				if(a.getElemento().get(i)==b.getElemento().get(j)) {
+				if(a.getElemento().get(i).equals(b.getElemento().get(j))) {
 					elemento.remove(a.getElemento().get(i));
 				}
 			}
@@ -93,12 +92,12 @@ public class Conjunto<T> implements IConjunto<T> {
 		for(int i=0;i<elemento.size();i++) {
 			if(elemento.get(i)!=null) {
 				elementos+=elemento.get(i)+" ";
-				if(i<elemento.size()&&elemento.get(i)!=null) {
+				if(elemento.get(elemento.size()-1)!=elemento.get(i)) {
 					elementos+=", ";
 				}
 			}
 		}
-		elementos =" ]";
+		elementos +="]";
 		return elementos;
 	}
 
