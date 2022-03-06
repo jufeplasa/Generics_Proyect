@@ -18,35 +18,75 @@ public class Conjunto<T> implements IConjunto<T> {
 
 	@Override
 	public void addElements(T newElement) {
+		System.out.println(newElement);
 		elemento.add(newElement);
 	}
-
-	public T union(Conjunto<T> a) {
-		
-		for(int i=0;i<a.getElemento().size();i++) {
-			
+	
+	public boolean elementoRepetido(T element) {
+		boolean repetido=false;
+		for(int i=0;i<elemento.size()&&!repetido;i++ ) {
+			if(elemento.get(i)==element) {
+				repetido=true;
+			}
 		}
-		return null;
+		return repetido;
+	}
+	
+	
+
+	@Override
+	public void union(IConjunto<T> a, IConjunto<T> b) {
+		for(int i=0;i<a.getElemento().size();i++) {
+			if(!elementoRepetido(a.getElemento().get(i))) {
+				addElements(a.getElemento().get(i));
+			}
+		}
+		for(int i=0;i<b.getElemento().size();i++) {
+			if(!elementoRepetido(b.getElemento().get(i))) {
+				addElements(b.getElemento().get(i));
+			}
+		}
 	}
 
 	@Override
-	public T intersection(IConjunto<T> a) {
-		// TODO Auto-generated method stub
-		return null;
+	public void intersection(IConjunto<T> a, IConjunto<T> b) {
+		for(int i=0;i<a.getElemento().size();i++) {
+			for(int j=0;j<b.getElemento().size();j++) {
+				if(a.getElemento().get(i)==b.getElemento().get(j)) {
+					if(!elementoRepetido(a.getElemento().get(i))) {
+						addElements(a.getElemento().get(i));
+					}
+				}
+			}
+		}
 	}
 
 	@Override
-	public T diferencia(IConjunto<T> a) {
+	public void diferencia(IConjunto<T> a, IConjunto<T> b) {
 		// TODO Auto-generated method stub
-		return null;
+		Conjunto<T> universal = new Conjunto<T>();
+		universal.union(a, b);
+		for(int i=0;i<universal.getElemento().size();i++) {
+			if(a.getElemento().contains(universal)&&!b.getElemento().contains(universal)) {
+				if(!elementoRepetido(a.getElemento().get(i))) {
+					addElements(a.getElemento().get(i));
+				}
+			}
+		}
 	}
 
 	@Override
-	public T diferenciaSimetrica(IConjunto<T> a) {
-		// TODO Auto-generated method stub
-		return null;
+	public void diferenciaSimetrica(IConjunto<T> a, IConjunto<T> b) {
+		union(a, b);
+		for(int i=0;i<a.getElemento().size();i++) {
+			for(int j=0;j<b.getElemento().size();j++) {
+				if(a.getElemento().get(i)==b.getElemento().get(j)) {
+					elemento.remove(a.getElemento().get(i));
+				}
+			}
+		}	
 	}
-
+	
 	@Override
 	public String mostrarConjunto() {
 		String elementos ="[ ";
@@ -70,6 +110,5 @@ public class Conjunto<T> implements IConjunto<T> {
 		this.elemento = elemento;
 	}
 
-
-
+	
 }

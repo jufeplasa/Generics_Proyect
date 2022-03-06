@@ -1,13 +1,15 @@
 package model;
 
+import java.util.ArrayList;
+
 public interface IConjunto<T>  {
     public void createSet();
     public void addElements(T newElement);
-    public T union(Conjunto<T> a); 
-    public T intersection(IConjunto<T> a);
-    public T diferencia(IConjunto<T> a);
-    public T diferenciaSimetrica(IConjunto<T> a);
+    public void union(IConjunto<T> a,IConjunto<T> b); 
+    public void intersection(IConjunto<T> a, IConjunto<T> b);
+    public void diferencia(IConjunto<T> a, IConjunto<T> b);
+    public void diferenciaSimetrica(IConjunto<T> a, IConjunto<T> b);
     public String mostrarConjunto();
-    
+    public ArrayList<T> getElemento();
     
 }
