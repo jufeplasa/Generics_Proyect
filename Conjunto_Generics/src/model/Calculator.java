@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Calculator implements Conjunto {
+public class Calculator implements IConjunto<String> {
     
     static Scanner sc = new Scanner(System.in);
     public Set<String> nameSet() {
@@ -54,34 +54,9 @@ public class Calculator implements Conjunto {
         System.out.println("Interseccion de los dos conjuntos: " + intersection + "\n");
     }
 
-    public int message_menu() {
-        int option;
-        System.out.println("*********MENU**********" + "\n1.Union               *" + "\n2.Intersección        *" + "\n3.Diferencia simétrica*" + "\n0.salir               *" + "\n***********************");
-        option = sc.nextInt();
-        return option;
-    }
 
-    public void menu(Set<String> a, Set<String> b) {
+    
 
-        int option;
-        option = message_menu();
-
-        while (option != 0) {
-
-            if (option == 1) {
-                union(a, b);
-                option = message_menu();
-            } else if (option == 2) {
-                intersection(a, b);
-                option = message_menu();
-            } else if (option == 3) {
-                diferencia_1(a, b);
-                option = message_menu();
-            } else if (option >= 4 || option <= -1) {
-                System.out.println("Porfavor, dijite una opción correcta.");
-                option = message_menu();
-            }
-        }
-    }
+    
 
 }
